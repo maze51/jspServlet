@@ -36,6 +36,10 @@
 		request.getProtocol() : <%=request.getProtocol() %><br>
 		
 		<img src="<%=request.getContextPath() %>/img/sally.png">
+		
+		<%-- 파라미터 받기 --%>
+		request.getParameter("rangersName") : <%=request.getParameter("rangersName") %> <br>
+		
 		  
 </body>
 </html>
