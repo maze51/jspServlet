@@ -28,10 +28,10 @@
         <h2 class="form-signin-heading">Please sign in</h2>
         
         <label for="userId" class="sr-only">userId</label>
-        <input type="text" id="userId" name="userId" class="form-control" placeholder="userId" required autofocus>
+        <input type="text" id="userId" name="userId" class="form-control" placeholder="userId" required autofocus value="brown">
         
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required value="brown1234">
         
         <div class="checkbox">
           <label>
