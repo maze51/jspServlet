@@ -12,6 +12,14 @@ import org.slf4j.LoggerFactory;
 public class UserDao implements IuserDao{
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserDao.class);
+	
+//	private static UserDao dao;
+//	
+//	public static UserDao getInstance(){
+//		if(dao==null) dao = new UserDao();
+//		return dao;
+//	}
+	
 	public static void main(String[] args) {
 		
 		/***Given***/
@@ -22,6 +30,16 @@ public class UserDao implements IuserDao{
 		
 		/***Then***/
 		logger.debug("userList : {}", userList);
+		
+		
+		/***Given***/
+		String userId = "cony";
+		
+		/***When***/
+		UserVo user = userDao.getUser(userId);
+		
+		/***Then***/
+		logger.debug("user : {}", user);
 	}
 	
 	
@@ -39,5 +57,21 @@ public class UserDao implements IuserDao{
 		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 		List<UserVo> userList = sqlSession.selectList("user.userList");
 		return userList;
+	}
+
+	/**
+	 * 
+	* Method : getUser
+	* 작성자 : PC10
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 정보 조회
+	 */
+	@Override
+	public UserVo getUser(String userId) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		UserVo user = sqlSession.selectOne("user.getUser", userId);
+		return user;
 	}
 }
