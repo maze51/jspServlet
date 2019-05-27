@@ -27,7 +27,7 @@ public class UserController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// userList객체를 userList.jsp에서 참고할 수 있도록 request객체에 속성으로 넣어준다
+		// userList객체를 userList.jsp에서 내용 출력 시 참고할 수 있도록 request객체에 속성으로 넣어준다
 		request.setAttribute("userList", userService.userList()); // 속성명은 자유지정 가능. 보통은 알기 쉽게 객체명으로
 		
 		// userList객체를 이용하여 사용자 화면을 생성하는 jsp
