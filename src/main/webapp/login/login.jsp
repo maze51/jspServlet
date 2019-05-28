@@ -19,7 +19,7 @@
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
+    <script src="<%=request.getContextPath() %>/js/js.cookie.js"></script>
   <script>
   	$(document).ready(function(){
   		// 문서 로딩이 완료되고 나서 실행되는 부분
@@ -27,10 +27,10 @@
   		// 1. rememberme cookie가 있는지? 있다면 값이 true인지?
   		// 1-1. rememberme가 true이면 input id="rememberme" 체크박스를 체크
   		
-  		var rememberme = getCookie("rememberme");
+  		var rememberme = Cookies.get("rememberme");
   		if(rememberme == "true"){
   			$("#rememberme").prop("checked", true);
-  			$("#userId").val(getCookie("userId")); // userId 쿠키에서 값을 읽어 화면에 띄운다
+  			$("#userId").val(Cookies.get("userId")); // userId 쿠키에서 값을 읽어 화면에 띄운다
   			$("#password").focus();
   		}
   		
@@ -40,14 +40,14 @@
   			//	사용자 아이디 값을 userId 쿠키로 저장
   			//	true값을 rememberme cookie 값으로 저장
   			if($("#rememberme").is(":checked")){
-  				setCookie("userId", $("#userId").val(), 30);
-  				setCookie("rememberme", "true", 30); // 문자열이라 그냥 값을 준다
+  				Cookies.set("userId", $("#userId").val(), {expires : 30});
+  				Cookies.set("rememberme", "true", {expires : 30}); // 문자열이라 그냥 값을 준다
   			}
   			// 만약에 rememberme 체크박스가 해제되어 있는 경우
   			//	userId, rememberme cookie 값을 삭제
   			else{
-  				deleteCookie("userId");
-  				deleteCookie("rememberme");
+  				Cookies.remove("userId");
+  				Cookies.remove("rememberme");
   			}
   			
   			// 로그인 요청을 서버로 전송
