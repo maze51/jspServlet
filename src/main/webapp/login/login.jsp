@@ -11,15 +11,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>/jsp/login</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/js.cookie.js"></script>
+    <script src="${pageContext.request.contextPath}/js/js.cookie.js"></script>
   <script>
   	$(document).ready(function(){
   		// 문서 로딩이 완료되고 나서 실행되는 부분
@@ -102,12 +102,12 @@
   <body>
 
     <div class="container">
-      <form id="frm" class="form-signin" action="<%=request.getContextPath() %>/login" method="post">
+      <form id="frm" class="form-signin" action="${pageContext.request.contextPath}/login" method="post">
       
         <h2 class="form-signin-heading">Please sign in</h2>
         
         <label for="userId" class="sr-only">userId</label>
-        <input type="text" id="userId" name="userId" class="form-control" placeholder="userId" required>
+        <input type="text" id="userId" name="userId" class="form-control" value="${param.userId }" placeholder="userId" required>
         
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required value="brown1234">
