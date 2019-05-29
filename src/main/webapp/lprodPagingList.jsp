@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.lprod.model.LprodVo"%>
 <%@page import="kr.or.ddit.paging.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
@@ -16,7 +17,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>사용자페이징리스트</title>
+<title>LPROD페이징리스트</title>
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
@@ -36,35 +37,32 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
 					<div class="col-sm-8 blog-main">
-						<h2 class="sub-header">사용자</h2>
+						<h2 class="sub-header">LPROD</h2>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>사용자 아이디</th>
-									<th>사용자 이름</th>
-									<th>사용자 별명</th>
-									<th>등록일시</th>
+									<th>LPROD_ID</th>
+									<th>LPROD_GU</th>
+									<th>LPROD_NM</th>
 								</tr>
 								
-								<c:forEach items="${userList }" var="user">
-									<tr>
-										<td>${user.userId }</td>
-										<td>${user.name }</td>
-										<td>${user.alias }</td>
-										<td></td>
-									</tr>
-								</c:forEach>
+								<%
+									List<LprodVo> lprodList = (List<LprodVo>)request.getAttribute("lprodList"); // controller에서 가져온 userList
+								%>
 								
+								<c:forEach items="${lprodList }" var="lprod">
+								<tr>
+									<td>${lprod.lprod_id }</td>
+									<td>${lprod.lprod_gu }</td>
+									<td>${lprod.lprod_nm }</td>
+								</tr>
+								</c:forEach>
 								
 							</table>
 						</div>
 				
 						<a class="btn btn-default pull-right">사용자 등록</a>
 					
-						<!-- 
-							사용자 수 : 105건
-							페이지네이션 : 11건
-						 -->
 						<div class="text-center">
 							<ul class="pagination">
 								
@@ -73,7 +71,7 @@
 								<%if(pageVo.getPage() == 1){ %>
 									<li class="disabled"><span>«</span></li>
 								<%} else {%>
-									<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%=pageVo.getPageSize()%>">«</a></li>
+									<li><a href="${pageContext.request.contextPath}/lprodPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%=pageVo.getPageSize()%>">«</a></li>
 								<%} %>
 								
 								<%	
@@ -90,14 +88,14 @@
 											</li>
 											<%} else {%>
 											<li>
-												<a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a>
+												<a href="${pageContext.request.contextPath}/lprodPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a>
 											</li>
 											<%} %>
 									<%}%>
 									<%if(pageVo.getPage() == paginationSize){ %>
 										<li class="disabled"><span>»</span></li>
 									<%} else {%>
-										<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%=pageVo.getPageSize()%>">»</a></li>
+										<li><a href="${pageContext.request.contextPath}/lprodPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%=pageVo.getPageSize()%>">»</a></li>
 									<%} %>
 							</ul>
 						</div>

@@ -11,13 +11,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">JSP/SPRING header.jsp
-			<% UserVo SESSION_USER = (UserVo)session.getAttribute("USER_INFO"); 
-				String userName = "";
-				if(SESSION_USER == null) userName = "비회원";
-				else userName = SESSION_USER.getName();
-			%>
-			<%= userName %></a>
+			<a class="navbar-brand" href="#">JSP/SPRING ${USER_INFO.name }
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">

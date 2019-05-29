@@ -1,9 +1,10 @@
+<%@page import="kr.or.ddit.prod.model.ProdVo"%>
+<%@page import="kr.or.ddit.lprod.model.LprodVo"%>
 <%@page import="kr.or.ddit.paging.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>사용자페이징리스트</title>
+<title>PROD페이징리스트</title>
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
@@ -36,35 +37,43 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
 					<div class="col-sm-8 blog-main">
-						<h2 class="sub-header">사용자</h2>
+						<h2 class="sub-header">PROD</h2>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>사용자 아이디</th>
-									<th>사용자 이름</th>
-									<th>사용자 별명</th>
-									<th>등록일시</th>
+									<th>prod_id</th>
+									<th>prod_name</th>
+									<th>prod_lgu</th>
+									<th>prod_buyer</th>
+									<th>prod_cost</th>
+									<th>prod_price</th>
+									<th>prod_sale</th>
+									<th>prod_outline</th>
 								</tr>
 								
-								<c:forEach items="${userList }" var="user">
-									<tr>
-										<td>${user.userId }</td>
-										<td>${user.name }</td>
-										<td>${user.alias }</td>
-										<td></td>
-									</tr>
-								</c:forEach>
+								<%
+									List<ProdVo> prodList = (List<ProdVo>)request.getAttribute("prodList"); // controller에서 가져온 userList
+								%>
+								
+								<% for(int i=0;i<prodList.size();i++){%>
+								<tr>
+									<td><%=prodList.get(i).getProd_id() %></td>
+									<td><%=prodList.get(i).getProd_name() %></td>
+									<td><%=prodList.get(i).getProd_lgu() %></td>
+									<td><%=prodList.get(i).getProd_buyer() %></td>
+									<td><%=prodList.get(i).getProd_cost() %></td>
+									<td><%=prodList.get(i).getProd_price() %></td>
+									<td><%=prodList.get(i).getProd_sale() %></td>
+									<td><%=prodList.get(i).getProd_outline() %></td>
+								</tr>
+								<%} %>
 								
 								
 							</table>
 						</div>
 				
-						<a class="btn btn-default pull-right">사용자 등록</a>
+						<a class="btn btn-default pull-right">새 항목 등록</a>
 					
-						<!-- 
-							사용자 수 : 105건
-							페이지네이션 : 11건
-						 -->
 						<div class="text-center">
 							<ul class="pagination">
 								
@@ -73,7 +82,7 @@
 								<%if(pageVo.getPage() == 1){ %>
 									<li class="disabled"><span>«</span></li>
 								<%} else {%>
-									<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%=pageVo.getPageSize()%>">«</a></li>
+									<li><a href="${pageContext.request.contextPath}/prodPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%=pageVo.getPageSize()%>">«</a></li>
 								<%} %>
 								
 								<%	
@@ -90,14 +99,14 @@
 											</li>
 											<%} else {%>
 											<li>
-												<a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a>
+												<a href="${pageContext.request.contextPath}/prodPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a>
 											</li>
 											<%} %>
 									<%}%>
 									<%if(pageVo.getPage() == paginationSize){ %>
 										<li class="disabled"><span>»</span></li>
 									<%} else {%>
-										<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%=pageVo.getPageSize()%>">»</a></li>
+										<li><a href="${pageContext.request.contextPath}/prodPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%=pageVo.getPageSize()%>">»</a></li>
 									<%} %>
 							</ul>
 						</div>

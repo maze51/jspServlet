@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,25 +38,21 @@
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>사용자 아이디</th>
+									<th>사용자 아이디(el)</th>
 									<th>사용자 이름</th>
 									<th>사용자 별명</th>
 									<th>등록일시</th>
 								</tr>
 								
-								<%
-									List<UserVo> userList = (List<UserVo>) request.getAttribute("userList"); // controller에서 가져온 userList
-								%>
-								
-								<% for(int i=0;i<userList.size();i++){%>
-								<tr>
-									<td><%=userList.get(i).getUserId() %></td>
-									<td><%=userList.get(i).getName() %></td>
-									<td><%=userList.get(i).getAlias() %></td>
-									<td></td>
-								</tr>
-								<%} %>
-								
+								<!-- userList의 데이터를 한 건씩 조회해서 pageContext.setAttribute("user", vo); -->
+								<c:forEach items="${userList }" var="user">
+									<tr>
+										<td>${user.userId }</td>
+										<td>${user.name }</td>
+										<td>${user.alias }</td>
+										<td></td>
+									</tr>
+								</c:forEach>
 								
 							</table>
 						</div>

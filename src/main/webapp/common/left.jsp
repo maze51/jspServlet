@@ -9,5 +9,7 @@
 		
 <%-- 		<li class="active"><a href="<%=request.getContextPath()%>/userPagingList?page=1&pageSize=10">사용자페이징리스트</a></li> --%>
 		<li class="active"><a href="<%=request.getContextPath()%>/userPagingList">사용자페이징리스트</a></li>
+		<li class="active"><a href="<%=request.getContextPath()%>/lprodPagingList">LPROD페이징리스트</a></li>
+		<li class="active"><a href="<%=request.getContextPath()%>/prodPagingList">PROD페이징리스트</a></li>
 	</ul>
 </div>
