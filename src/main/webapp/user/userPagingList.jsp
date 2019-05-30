@@ -46,8 +46,10 @@
 									<th>등록일시</th>
 								</tr>
 								
-								<c:forEach items="${userList }" var="user">
+								<!-- 향상된 for문 형태 -->
+								<c:forEach items="${userList }" var="user" varStatus="status">
 									<tr>
+<%-- 									<td>${status.index} / ${status.count} / ${user.userId }</td> --%>
 										<td>${user.userId }</td>
 										<td>${user.name }</td>
 										<td>${user.alias }</td>
@@ -68,37 +70,61 @@
 						<div class="text-center">
 							<ul class="pagination">
 								
-								<%PageVo pageVo = (PageVo)request.getAttribute("pageVo");%>
+<%-- 								<%PageVo pageVo = (PageVo)request.getAttribute("pageVo");%> --%>
+<%-- 								<c:set var="pageVo" value="${pageVo.page }" scope="request"/> --%>
 								
-								<%if(pageVo.getPage() == 1){ %>
-									<li class="disabled"><span>«</span></li>
-								<%} else {%>
-									<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%=pageVo.getPageSize()%>">«</a></li>
-								<%} %>
-								
-								<%	
-									// 가져온 paginationSize를 활용해 화면에 나오는 page값을 고쳐준다 
-									// + /userPagingList?page=1&pageSize=10 반영하기
-									int paginationSize = (Integer)request.getAttribute("paginationSize");
-									for(int i=1;i<=paginationSize;i++){ %>
+								<c:choose>
+									<c:when test="${pageVo.page == 1 }">
+										<li class="disabled"><span>«</span></li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="${pageContext.request.contextPath}/userPagingList?page=${pageVo.page - 1 }&pageSize=${pageVo.pageSize }">«</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+									
+<!-- 									// 가져온 paginationSize를 활용해 화면에 나오는 page값을 고쳐준다  -->
+<!-- 									// + /userPagingList?page=1&pageSize=10 반영하기 -->
+<%-- 									<%int paginationSize = (Integer)request.getAttribute("paginationSize");%> --%>
+<%-- 									for(int i=1;i<=paginationSize;i++){ %> --%>
 										
-										<%
-										// 내가 현재 몇 번째 페이지에 있는가? pageVo에 저장되어 있다. 그걸 찾아서 li에 class="active"를 지정한다
-										if(pageVo.getPage() == i){ %>
-											<li class="active">
-												<span><%=i %></span>
-											</li>
-											<%} else {%>
-											<li>
-												<a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a>
-											</li>
-											<%} %>
-									<%}%>
-									<%if(pageVo.getPage() == paginationSize){ %>
+<%-- 										<% --%>
+<%-- 										// 내가 현재 몇 번째 페이지에 있는가? pageVo에 저장되어 있다. 그걸 찾아서 li에 class="active"를 지정한다 --%>
+<%-- 										if(pageVo.getPage() == i){ %> --%>
+<!-- 											<li class="active"> -->
+<%-- 												<span><%=i %></span> --%>
+<!-- 											</li> -->
+<%-- 											<%} else {%> --%>
+<!-- 											<li> -->
+<%-- 												<a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a> --%>
+<!-- 											</li> -->
+<%-- 											<%} %> --%>
+<%-- 									<%}%> --%>
+									<c:forEach begin="1" end="${paginationSize}" var="i">
+										<c:choose>
+											<c:when test="${pageVo.page == i }">
+												<li class="active">
+													<span>${i }</span>
+												</li>
+											</c:when>
+											<c:otherwise>
+												<li>
+												<a href="${pageContext.request.contextPath}/userPagingList?page=${i }&pageSize=${pageVo.pageSize }">${i }</a>
+												</li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									
+									
+									<c:choose>
+									<c:when test="${pageVo.page == paginationSize }">
 										<li class="disabled"><span>»</span></li>
-									<%} else {%>
-										<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%=pageVo.getPageSize()%>">»</a></li>
-									<%} %>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/userPagingList?page=${pageVo.page + 1 }&pageSize=${pageVo.pageSize }">»</a></li>
+									</c:otherwise>
+									</c:choose>
 							</ul>
 						</div>
 					</div>
