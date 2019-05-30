@@ -20,6 +20,37 @@
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
+<style>
+	.userTr:hover{
+		cursor : pointer;
+	}
+</style>
+
+<script>
+	$(document).ready(function(){
+		// 사용자 tr 태그 이벤트 등록
+		$(".userTr").on("click", function(){
+			// 이벤트가 잘 등록되었는지 확인
+			console.log("userTr click");	
+			//userId를 획득하는 방법
+			//$(this).find(".userId").text();
+			//$(this).data("userid"); // data-userid="${vo.userId }"로 부여한 값을 찾는다
+			
+			// 사용자 아이디를 #userId 값으로 설정해주고
+			var userId = $(this).find(".userId").text();
+			$("#userId").val(userId);
+			
+			// #frm을 이용하여 submit();
+			$("#frm").submit();
+			
+		});
+		
+// 		$("#userReg").on("click", function(){
+			
+// 		})
+	});
+</script>
+
 </head>
 
 <body>
@@ -37,6 +68,13 @@
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>
+						
+						<!-- 사용자 상세조회 : userId가 필요하다 -->
+						<form id="frm" action="${pageContext.request.contextPath }/user"
+						method="get">
+							<input type="hidden" id="userId" name="userId" />
+						</form>
+						
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
@@ -47,12 +85,12 @@
 								</tr>
 								
 								<!-- 향상된 for문 형태 -->
-								<c:forEach items="${userList }" var="user" varStatus="status">
-									<tr>
-<%-- 									<td>${status.index} / ${status.count} / ${user.userId }</td> --%>
-										<td>${user.userId }</td>
-										<td>${user.name }</td>
-										<td>${user.alias }</td>
+								<c:forEach items="${userList }" var="vo" varStatus="status">
+									<tr class="userTr" data-userid="${vo.userId }" data-name="${vo.name }"> <!-- data-userid부분은 임의의 속성을 추가한 것 -->
+<%-- 									<td>${status.index} / ${status.count} / ${vo.userId }</td> --%>
+										<td class="userId">${vo.userId }</td>
+										<td>${vo.name }</td>
+										<td>${vo.alias }</td>
 										<td></td>
 									</tr>
 								</c:forEach>
@@ -61,7 +99,7 @@
 							</table>
 						</div>
 				
-						<a class="btn btn-default pull-right">사용자 등록</a>
+						<a class="btn btn-default pull-right" id="userReg">사용자 등록</a>
 					
 						<!-- 
 							사용자 수 : 105건
