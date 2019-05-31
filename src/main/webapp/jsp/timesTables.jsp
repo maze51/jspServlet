@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +16,19 @@
 
 	<%-- localhost/jsp/jsp/timesTables.jsp --%>
 	
-	<%
-	String param = request.getParameter("i"); 
-	String param2 = request.getParameter("j");
-	%>
-	
-	<%-- 구구단 출력(2~9단) --%>
-	
+	<%-- 구구단 출력 --%>
 	<table border="1">
-			<%for(int i=1;i<=Integer.parseInt(param2);i++){%>
-		<tr>
-				<% for(int j=2;j<=Integer.parseInt(param);j++){%>
-			<td>
-				<%= j + " * " + i + " = " + j*i %>
-			</td>
-				<% } %>
-		</tr>	
-			<% } %>
+			
+			<c:forEach begin="1" end="${param.b == null ? 9 : param.b }" var="i">
+				<tr>
+					<c:forEach begin="2" end="${param.a == null ? 9 : param.a }" var="j">
+						<td>
+							${j } * ${i } = ${j*i }
+						</td>				
+					</c:forEach>
+				</tr>
+			</c:forEach>
+
 	</table>
 </body>
 </html>
