@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class TimesServlet extends HttpServlet{
 	
+	private static final long serialVersionUID = 1L;
 	//// logger를 쓰기 위해 선언 및 생성
 	//// Logger 임포트 시 slf4j를 선택해 줄 것
 	private Logger logger = LoggerFactory.getLogger(TimesServlet.class); // 맨 뒤 괄호는 현재 클래스명

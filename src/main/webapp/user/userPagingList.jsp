@@ -29,7 +29,7 @@
 <script>
 	$(document).ready(function(){
 		// 사용자 tr 태그 이벤트 등록
-		$(".userTr").on("click", function(){
+		$(".userTr").on("click", function(){ // .userTr은 사용자리스트의 <tr>
 			// 이벤트가 잘 등록되었는지 확인
 			console.log("userTr click");	
 			//userId를 획득하는 방법
@@ -37,17 +37,13 @@
 			//$(this).data("userid"); // data-userid="${vo.userId }"로 부여한 값을 찾는다
 			
 			// 사용자 아이디를 #userId 값으로 설정해주고
-			var userId = $(this).find(".userId").text();
-			$("#userId").val(userId);
+			var userId = $(this).find(".userId").text(); // .userId는 ${vo.userId}를 가진 <td>
+			$("#userId").val(userId); // #userId는 아이디 전송을 위한 hidden input의 아이디
 			
 			// #frm을 이용하여 submit();
-			$("#frm").submit();
+			$("#frm").submit(); // #frm은 #userId를 포함한 form. action = "${pageContext.request.contextPath}/user"
 			
 		});
-		
-// 		$("#userReg").on("click", function(){
-			
-// 		})
 	});
 </script>
 
@@ -99,7 +95,7 @@
 							</table>
 						</div>
 				
-						<a class="btn btn-default pull-right" id="userReg">사용자 등록</a>
+						<a href="${pageContext.request.contextPath }/userForm" class="btn btn-default pull-right">사용자 등록</a>
 					
 						<!-- 
 							사용자 수 : 105건

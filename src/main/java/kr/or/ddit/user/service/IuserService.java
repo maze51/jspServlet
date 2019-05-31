@@ -13,5 +13,10 @@ public interface IuserService {
 	UserVo getUser(String id);
 	
 	Map<String, Object> userPagingList(PageVo pageVo);
-		
+	
+	int insertUser(UserVo userVo);
+	
+	int deleteUser(String userId);
+	
+	int updateUser(UserVo userVo);
 }
