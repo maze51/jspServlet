@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import kr.or.ddit.paging.model.PageVo;
@@ -188,6 +189,11 @@ public class UserDaoTest {
 		assertEquals(1, updateCnt);
 		
 		userDao.deleteUser(userVo.getUserId());
+	}
+	
+	@Test
+	public void dateTest(){
+		logger.debug("new date : {}", new Date());
 	}
 	
 }
