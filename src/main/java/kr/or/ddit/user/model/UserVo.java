@@ -35,13 +35,15 @@ public class UserVo {
 	}
 	
 	public UserVo(String name, String userId, String alias, String pass,
-			String addr1, String addr2, String zipcd, Date birth) {
+			String addr1, String addr2, String zipcd, Date birth/*, String path, String filename*/) {
 		this(name, userId, alias);
 		this.pass = pass;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.zipcd = zipcd;
 		this.birth = birth;
+//		this.path = path;
+//		this.filename = filename;
 	}
 
 	public String getAddr1() {

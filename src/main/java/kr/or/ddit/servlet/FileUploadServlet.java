@@ -3,7 +3,6 @@ package kr.or.ddit.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
@@ -21,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @WebServlet("/fileUpload")
-@MultipartConfig(maxFileSize=1024*1024*3, maxRequestSize=1024*1024)
+@MultipartConfig(maxFileSize=1024*1024*3, maxRequestSize=1024*1024*15)
 public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,31 +51,10 @@ public class FileUploadServlet extends HttpServlet {
 			String contentDisposition = part.getHeader("content-disposition");
 			String fileName = PartUtil.getFileName(contentDisposition);
 			String ext = PartUtil.getExt(fileName);
-			ext = ext.equals("") ? "" : "."+ext;
 			
-			
-			// 연도에 해당하는 폴더가 있는지, 연도 안에 월에 해당하는 폴더가 있는지 검색
-			Date dt = new Date(); // 오늘 날짜 구하기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
-			
-			String yyyyMM = sdf.format(dt);
-			String yyyy = yyyyMM.substring(0, 4);
-			String mm = yyyyMM.substring(4, 6); // 연, 월을 문자열로 formatting하는 과정
-			
-			File yyyyFolder = new File("d:\\upload\\" + yyyy);
-			
-			// 신규연도로 넘어갔을 때 해당 연도의 폴더를 생성한다
-			if(!yyyyFolder.exists()){
-				yyyyFolder.mkdir();
-			}
-			
-			// 월에 해당하는 폴더가 있는지 확인
-			File mmFolder = new File("d:\\upload\\" + yyyy + File.separator + mm);
-			if(!mmFolder.exists()){
-				mmFolder.mkdir();
-			}
-			String uploadPath = "d:\\upload\\" + yyyy + File.separator + mm;
+			String uploadPath = PartUtil.getUploadPath();
 			File uploadFolder = new File(uploadPath);
+			
 			if(uploadFolder.exists()){
 			// 파일 디스크에 쓰기
 			part.write(uploadPath + File.separator + UUID.randomUUID().toString() + ext);

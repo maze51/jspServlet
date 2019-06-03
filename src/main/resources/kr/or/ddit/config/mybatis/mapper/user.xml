@@ -38,7 +38,7 @@
 	<insert id="insertUser" parameterType="userVo">
 		insert into users
 		values(#{userId}, #{name}, #{alias}, #{pass}, #{addr2}, 
-			#{zipcd}, #{birth}, '', #{addr1}, '')
+			#{zipcd}, #{birth}, #{path, jdbcType=VARCHAR}, #{addr1}, #{filename, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 사용자 삭제 -->
@@ -58,6 +58,10 @@
 		    ,ZIPCD = #{zipcd}
 		    ,BIRTH = #{birth}
 		    ,ADDR1 = #{addr1}
+		    <if test="path != null">
+			    ,PATH = #{path}
+			    ,FILENAME = #{filename}
+		    </if>
 		where userid=#{userId}
 	</update>
 	
