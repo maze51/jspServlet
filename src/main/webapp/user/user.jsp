@@ -25,18 +25,14 @@
 	$(document).ready(function(){
 		
 		$("#userUpdateBtn").on("click", function(){
-			
 			$("#frm").submit();
 		})
 	})
-
 </script>
-
 
 </head>
 
 <body>
-	
 	<!-- header.jsp -->
 	<%@include file="/common/header.jsp" %>
 	
@@ -65,9 +61,9 @@
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 								<div class="col-sm-10">
-									<label class="control-label">${userVo.userId }</label>
-<!-- 										<input type="text" class="form-control" id="userId" name="userId" -->
-<!-- 											placeholder="사용자 아이디"> -->
+									<label class="control-label" id="userId">${userVo.userId }</label>
+									<input type="hidden" name="sendId" value="${userVo.userId }">
+									<%--userModifyController 서블릿으로 userId를 전송하기 위한 hidden input --%>
 								</div>
 							</div>
 		

@@ -75,8 +75,8 @@
 							<div class="form-group">
 								<label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
 								<div class="col-sm-10">
-									<input type="hidden" id="userId" name="userId" value="${USER_INFO.userId }"/>
-									<label>${USER_INFO.userId }</label>
+									<input type="hidden" id="userId" name="userId" value="${userVo.userId }"/>
+									<label>${userVo.userId }</label>
 								</div>
 							</div>
 							
@@ -84,7 +84,7 @@
 								<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="pass" name="pass"
-										placeholder="비밀번호" value="${USER_INFO.pass }">
+										placeholder="비밀번호" value="${userVo.pass }">
 								</div>
 							</div>
 		
@@ -92,7 +92,7 @@
 								<label for="name" class="col-sm-2 control-label">이름</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="name" name="name"
-										placeholder="사용자 이름" value="${USER_INFO.name }">
+										placeholder="사용자 이름" value="${userVo.name }">
 								</div>
 							</div>
 							
@@ -100,7 +100,7 @@
 								<label for="alias" class="col-sm-2 control-label">별명</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="alias" name="alias"
-										placeholder="별명" value="${USER_INFO.alias }">
+										placeholder="별명" value="${userVo.alias }">
 								</div>
 							</div>
 							
@@ -108,7 +108,7 @@
 								<label for="addr1" class="col-sm-2 control-label">주소</label>
 								<div class="col-sm-8">
 									<input type="text" class="form-control" id="addr1" name="addr1"
-										placeholder="주소" readonly value="${USER_INFO.addr1 }">
+										placeholder="주소" readonly value="${userVo.addr1 }">
 								</div>
 								<div class="col-sm-2">
 									<button type="button" id="addrSearchBtn" class="btn btn-default pull-right">주소검색</button>
@@ -119,7 +119,7 @@
 								<label for="addr2" class="col-sm-2 control-label">상세주소</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="addr2" name="addr2"
-										placeholder="상세주소" value="${USER_INFO.addr2 }">
+										placeholder="상세주소" value="${userVo.addr2 }">
 								</div>
 							</div>
 							
@@ -127,7 +127,7 @@
 								<label for="zipcd" class="col-sm-2 control-label">우편번호</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="zipcd" name="zipcd"
-										placeholder="우편번호" readonly value="${USER_INFO.zipcd }">
+										placeholder="우편번호" readonly value="${userVo.zipcd }">
 								</div>
 							</div>
 							
@@ -135,7 +135,7 @@
 								<label for="birth" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
 									<input type="date" class="form-control" id="birth" name="birth"
-										placeholder="생일" value="${birth }">
+										placeholder="생일" value="${userVo.birthStr }">
 								</div>
 							</div>
 							

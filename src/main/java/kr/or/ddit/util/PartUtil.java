@@ -97,12 +97,12 @@ public class PartUtil {
 		// 연도에 해당하는 폴더가 있는지, 연도 안에 월에 해당하는 폴더가 있는지 검색
 		Date dt = new Date(); // 오늘 날짜 구하기
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMM");
-		String yyyyMM = sdf1.format(dt);
+		String yyyyMM = sdf1.format(dt); // Date를 String으로 변환
 		String yyyy = yyyyMM.substring(0, 4);
-		String mm = yyyyMM.substring(4, 6); // 연, 월을 문자열로 formatting하는 과정
+		String mm = yyyyMM.substring(4, 6); // 연, 월을 문자열로 formatting
 		
 		checkUploadFolder(yyyy, mm); // 폴더체크를 함께 처리
-		return UPLOAD_PATH + yyyy + File.separator + mm;
+		return UPLOAD_PATH + yyyy + File.separator + mm; // File.separator는 구분자(\\)
 	}
 	
 }

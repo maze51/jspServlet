@@ -19,4 +19,14 @@ public interface IuserService {
 	int deleteUser(String userId);
 	
 	int updateUser(UserVo userVo);
+	
+	/**
+	 * 
+	* Method : encryptPassAllUser
+	* 작성자 : PC10
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 비밀번호 암호화 일괄 적용 배치
+	 */
+	int encryptPassAllUser();
 }
