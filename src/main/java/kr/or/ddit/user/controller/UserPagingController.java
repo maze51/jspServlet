@@ -28,18 +28,10 @@ public class UserPagingController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// page, pageSize 파라미터가 없을 경우 page=1, pageSize=10 기본값을 설정한다
-//		int page = 0;
-//		int pageSize = 0;
-//		
-//		if(request.getParameter("page")!=null) 
-//			page = Integer.parseInt(request.getParameter("page")); else page = 1; 
-//		if(request.getParameter("pageSize")!=null) 
-//			pageSize = Integer.parseInt(request.getParameter("pageSize")); else pageSize = 10;
-		
 		String pageString = request.getParameter("page");
 		String pageSizeString = request.getParameter("pageSize");
 		
+		// page, pageSize 파라미터가 없을 경우 page=1, pageSize=10 기본값을 설정한다
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		int pageSize = pageSizeString == null ? 10 : Integer.parseInt(pageSizeString);
 		

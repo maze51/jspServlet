@@ -1,6 +1,7 @@
 package kr.or.ddit.prod.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.paging.model.PageVo;
@@ -28,6 +29,11 @@ public class ProdServiceImpl implements IProdService{
 		resultMap.put("paginationSize", paginationSize);
 		
 		return resultMap;
+	}
+
+	@Override
+	public List<ProdVo> prodList(String prod_lgu) {
+		return prodDao.prodList(prod_lgu);
 	}
 
 }

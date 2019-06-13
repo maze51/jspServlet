@@ -26,4 +26,14 @@ public class ProdDaoImpl implements IProdDao {
 		return prodCnt;
 	}
 
+	@Override
+	public List<ProdVo> prodList(String prod_lgu) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		List<ProdVo> list = sqlSession.selectList("prod.prodList", prod_lgu);
+		sqlSession.close();
+		return list;
+	}
+	
+	
+
 }

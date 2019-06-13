@@ -22,4 +22,12 @@
 	<select id="prodCnt" resultType="int">
 		select count(*) from prod
 	</select>
+	
+	<!-- 상품분류코드에 해당하는 상품목록을 반환 -->
+	<select id="prodList" parameterType="string" resultType="prodVo">
+		select prod_id
+			 , prod_name
+		from prod
+		where prod_lgu = #{prod_lgu}
+	</select>
 </mapper>
