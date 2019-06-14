@@ -48,13 +48,13 @@
 						<h2 class="sub-header">사용자상세</h2>
 						
 						<form id="frm" class="form-horizontal" role="form"
-							action="${pageContext.request.contextPath }/userModify"
+							action="${cp }/userModify"
 							method="get">
 						
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
-									<img src="${pageContext.request.contextPath }/profile?userId=${userVo.userId}"/>
+									<img src="${cp }/profile?userId=${userVo.userId}"/>
 								</div>
 							</div>
 							
@@ -112,7 +112,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button id="userUpdateBtn" type="submit" class="btn btn-default">사용자 수정</button>
-<%-- 									<a href="${pageContext.request.contextPath }/userForm" class="btn btn-default pull-right">사용자 등록</a> --%>
+<%-- 									<a href="${cp }/userForm" class="btn btn-default pull-right">사용자 등록</a> --%>
 								</div>
 							</div>
 							

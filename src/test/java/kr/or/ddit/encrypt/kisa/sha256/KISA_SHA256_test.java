@@ -21,7 +21,7 @@ public class KISA_SHA256_test {
 	@Test
 	public void sha256Test(){
 		/***Given***/
-		String plainText = "cony1234";
+		String plainText = "1234";
 
 		/***When***/
 		String encryptText = KISA_SHA256.encrypt(plainText);

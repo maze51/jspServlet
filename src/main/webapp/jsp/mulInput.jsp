@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/MulCalculation" method="post">
+	<form action="${cp}/MulCalculation" method="post">
 		param1: <input type="text" name="param1"> <br>
 		param2: <input type="text" name="param2"> <br>
 		<button>실행</button>

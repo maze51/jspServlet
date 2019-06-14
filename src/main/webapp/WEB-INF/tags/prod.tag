@@ -9,15 +9,23 @@
 <%@ attribute name="prod" type="java.lang.String" required="true"%>
 <br>
 code : ${prod } <br>
-<%
+	<%
 	String code = (String)jspContext.getAttribute("prod");
 	IProdDao prodDao = new ProdDaoImpl();
 	jspContext.setAttribute("prodList", prodDao.prodList(code));
+	%>
+	<select>
+		<c:forEach items="${prodList }" var="prod">
+			<option value="${prod.prod_id }">${prod.prod_name }</option>
+		</c:forEach>
+	</select>
 	
-	//jspContext.setAttribute("prodList", prodDao.prodList(code));
-	// 이하 forEach돌려서 설정
+	
+<%	
 	//---------------------------------------------------------------------
 	//String code = (String)jspContext.getAttribute("prod");
+	
+	/*
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "PC10";
@@ -45,4 +53,5 @@ code : ${prod } <br>
 	} catch(Exception e){
 		e.printStackTrace();
 	}
+	*/
 %>

@@ -7,7 +7,7 @@
 <title>FileUploadForm</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/fileUpload"
+	<form action="${cp }/fileUpload"
 	method="post" enctype="multipart/form-data">
 	<%-- enctype부분 설정이 위와 같이 되어 있어야 파일 업로드가 가능하다 --%>
 		userId : <input type="text" name="userId" value="brown"/><br>

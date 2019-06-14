@@ -18,7 +18,7 @@
 5. colorLoggingTag : <ct:colorLogging color="blue" size="10"/> <br>
 5-1. colorLoggingTag : <ct:colorLogging color="red"/> <br>
 6. rangersTag : <ct:rangers rangers="brown,cony,james,sally,moon"/> <br>
-7. codeTag : <ct:prod prod="P101"/>
+7. codeTag : <ct:prod prod="P201"/>
 
 </body>
 </html>

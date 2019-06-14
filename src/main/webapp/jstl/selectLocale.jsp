@@ -20,8 +20,8 @@ $(document).ready(function(){
 <body>
 
 <h2>select locale</h2>
-<form id="frm" action="${pageContext.request.contextPath }/selectLocale" method="post">
-	<%-- 굳이 post로 보내지 않고 다시 get으로 보내 처리할 수도 있다 --%>
+<form id="frm" action="${cp }/selectLocale" method="post">
+	<%-- post로 보내지 않고 다시 get으로 보내도 동일하게 처리할 수 있다 --%>
 	<select id="localeSelect" name="locale">
 		<option value="ko">한국어</option>
 		<option value="en">English</option>

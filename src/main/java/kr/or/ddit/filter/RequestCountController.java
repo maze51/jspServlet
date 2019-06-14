@@ -1,27 +1,22 @@
-package kr.or.ddit.login.controller;
+package kr.or.ddit.filter;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+/**
+ * Servlet implementation class RequestCountController
+ */
+@WebServlet("/requestCount")
+public class RequestCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		request.getRequestDispatcher("/requestCount.jsp").forward(request, response);
 		
-		// 로그아웃 처리
-		session.invalidate(); // 속성을 제거. 세션 자체가 사라지진 않음
-		
-		// 로그인으로 이동
-		request.getRequestDispatcher("/login").forward(request, response);
 		
 	}
-
 }

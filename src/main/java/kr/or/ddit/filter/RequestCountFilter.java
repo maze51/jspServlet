@@ -23,8 +23,8 @@ public class RequestCountFilter implements Filter {
 	
 	public void init(FilterConfig fConfig) throws ServletException {
 		requestMap = new HashMap<String, Integer>();
-		requestMap.put("userId", 10);
-		fConfig.getServletContext().setAttribute("requestMap", requestMap);
+		//requestMap.put("userId", 10);
+		fConfig.getServletContext().setAttribute("requestMap", requestMap); // application에 저장한다
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
