@@ -31,7 +31,8 @@
 	
 	<!-- 사용자 전체 수 조회 -->
 	<select id="usersCnt" resultType="int">
-		select count(*) from users
+		select /*+ INDEX_FFS(users PK_USERS) */ count(*)
+		from users
 	</select>
 	
 	<!-- 사용자 등록 -->
